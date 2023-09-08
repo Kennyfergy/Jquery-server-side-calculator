@@ -36,11 +36,14 @@ app.post("/calculations", (req, res) => {
       break;
     case "/":
       mathHistory.result = mathHistory.firstNumber / mathHistory.secondNumber;
-      return;
+      break;
   }
+
   // going to need mathTracker in the app.post
   mathTracker.push(mathHistory);
   res.sendStatus(201);
+
+  function displayHistory() {}
 });
 
 app.listen(PORT, () => {
