@@ -4,3 +4,7 @@ function handleReady() {
 
   //put on click listeners here
 }
+
+function appendDom(data) {
+  console.log("In appendDOM");
+}
