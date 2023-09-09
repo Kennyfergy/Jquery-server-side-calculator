@@ -39,7 +39,7 @@ app.post("/calculations", (req, res) => {
       break;
   }
 
-  // going to need mathTracker in the app.post
+  // going to need mathTracker in the app.post. edit, done
   mathTracker.push(mathHistory);
   res.sendStatus(201);
 
