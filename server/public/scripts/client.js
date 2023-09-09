@@ -3,9 +3,12 @@ let selectedOperator; // moved outside
 $(document).ready(handleReady);
 function handleReady() {
   console.log("JQ is loaded! yay");
-  $("#clearButton").on("click", clearInputs); //click listener for clear inputs
-  $("#submitButton").on("click", postData); //function i haven't made yet)
-  getData(); //*** not complete yet */ Get initial history when the page loads,
+  $("#clearButton").on("click", function () {
+    clearData();
+    clearInputs();
+  }); //click listener for clear inputs
+  $("#submitButton").on("click", postData);
+  getData();
   //make a function to store data, idk if its here or on server. ok its definitely going to be on the server. probably.
 
   // i think this is the way to do this using this and data
@@ -26,10 +29,6 @@ function handleReady() {
     selectedOperator = "/";
   });
 
-  //   function appendDom(data) {
-  //     console.log("In appendDOM");
-  //   }
-
   function clearInputs() {
     $("#firstNumber").val(""); // emptying fields
     $("#secondNumber").val("");
@@ -43,19 +42,18 @@ function handleReady() {
       url: "/calculations",
     })
       .then((response) => {
-        //appendDom(response)
-        console.log(response); //** added response to appendDom
-        appendDom(response); //// commented out and changed to appenddom? displayHistory(response); /// maybe??
+        console.log(response);
+        appendDom(response);
       })
       .catch((err) => {
         console.log(err);
       });
-    //either mathTracker or mathHistory, changed to input of data
+
     function appendDom(data) {
       $("#historyContainer").empty(); ///**** Just added
       for (const input of data) {
         console.log("looking for input of firstNumber", input.firstNumber);
-        console.log("looking for input of seconddNumber", input.secondNumber);
+        console.log("looking for input of secondNumber", input.secondNumber);
         console.log("looking for input of operator", input.operator);
         $("#historyContainer").append(`
  <p>
@@ -75,10 +73,10 @@ function handleReady() {
     $.ajax({
       method: "POST",
       url: "/calculations",
-      data: { firstNumber, secondNumber, operator, result }, // need to add which operator was selected
+      data: { firstNumber, secondNumber, operator, result },
     })
       .then(() => {
-        getData(); // might not be getData, shoot
+        getData();
         clearInputs(); // clearing mathTracker on server //need app.get /clear
       })
       .catch((err) => {
