@@ -1,3 +1,5 @@
+let selectedOperator; // moved outside
+
 $(document).ready(handleReady);
 function handleReady() {
   console.log("JQ is loaded! yay");
@@ -5,7 +7,12 @@ function handleReady() {
   $("#submitButton").on("click", postData); //function i haven't made yet)
   getData(); //*** not complete yet */ Get initial history when the page loads,
   //make a function to store data, idk if its here or on server. ok its definitely going to be on the server. probably.
-  let selectedOperator;
+
+  // i think this is the way to do this using this and data
+  //   $(".operator-button").on("click", function () {
+  //     selectedOperator = $(this).data("operator");
+  //   });
+
   $("#plusButton").on("click", function plusFunction() {
     selectedOperator = "+";
   });
@@ -27,50 +34,59 @@ function handleReady() {
     $("#firstNumber").val(""); // emptying fields
     $("#secondNumber").val("");
   }
-} //end onReady
 
-//need a post results function with an ajax in
+  //need a post results function with an ajax in
 
-////need to make on clicks for each operator button
-function getData() {
-  $.ajax({
-    method: "GET",
-    url: "/calculations",
-  })
-    .then((response) => {
-      //appendDom(response)
-      console.log(response);
-      displayHistory(response); /// maybe??
+  ////need to make on clicks for each operator button
+  function getData() {
+    $.ajax({
+      method: "GET",
+      url: "/calculations",
     })
-    .catch((err) => {
-      console.log(err);
-    });
-  //either mathTracker or mathHistory
-  function appendDom(response) {
-    $("#historyContainer").append(`
+      .then((response) => {
+        //appendDom(response)
+        console.log(response); //** added response to appendDom
+        appendDom(response); //// commented out and changed to appenddom? displayHistory(response); /// maybe??
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    //either mathTracker or mathHistory, changed to input of data
+    function appendDom(data) {
+      $("#historyContainer").empty(); ///**** Just added
+      for (const input of data) {
+        console.log("looking for input of firstNumber", input.firstNumber);
+        console.log("looking for input of seconddNumber", input.secondNumber);
+        console.log("looking for input of operator", input.operator);
+        $("#historyContainer").append(`
  <p>
- ${mathTracker.firstNumber} ${mathTracker.operator}
- ${mathTracker.secondNumber} ${mathTracker.result}
+ ${input.firstNumber} ${input.operator}
+ ${input.secondNumber} ${input.result}
  </p>
  `);
-  }
-  //make a getCalculations on the server to pull back here??
-} //end getData
-function postData(historyData) {
-  let firstNumber = $("#firstNumber").val();
-  let secondNumber = $("#secondNumber").val();
-  let operator = selectedOperator;
-  let result = "";
+      }
+      $("#historyContainer").text(data); //probably not this
+    } //end appendDom
 
-  $.ajax({
-    method: "POST",
-    url: "/calculations",
-    data: { firstNumber, secondNumber, operator, result }, // need to add which operator was selected
-  })
-    .then(() => {
-      getCalculations(); // need to make this function on the server i believe
+    //make a getCalculations on the server to pull back here??
+  } //end getData
+  function postData(historyData) {
+    let firstNumber = $("#firstNumber").val();
+    let secondNumber = $("#secondNumber").val();
+    let operator = selectedOperator;
+    let result = "";
+
+    $.ajax({
+      method: "POST",
+      url: "/calculations",
+      data: { firstNumber, secondNumber, operator, result }, // need to add which operator was selected
     })
-    .catch((err) => {
-      console.log(err);
-    });
-} //end postData
+      .then(() => {
+        getData(); // might not be getData, shoot
+        clearInputs(); // clearing mathTracker on server //need app.get /clear
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  } //end postData
+} //end onReady

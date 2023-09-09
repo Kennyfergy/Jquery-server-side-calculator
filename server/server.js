@@ -4,7 +4,6 @@ const app = express();
 const PORT = 5000;
 
 app.use(express.static("server/public"));
-
 app.use(bodyParser.urlencoded({ extended: true }));
 
 let mathTracker = [];
@@ -46,7 +45,13 @@ app.post("/calculations", (req, res) => {
   //need function to handle on click of submit, run mathHistory.operator and store data
   //function displayHistory() {}
 });
+app.post("/clear", (req, res) => {
+  console.log("post request for clear");
+  mathTracker = [];
+  res.sendStatus(201);
+});
 
+//leave at bottom of page
 app.listen(PORT, () => {
   console.log("Server is running on port", PORT);
 });
