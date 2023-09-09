@@ -3,7 +3,7 @@ function handleReady() {
   console.log("JQ is loaded! yay");
   $("#clearButton").on("click", clearInputs); //click listener for clear inputs
   $("#submitButton").on("click", displayHistory); //function i haven't made yet)
-
+  getData(); //*** not complete yet */ Get initial history when the page loads,
   //make a function to store data, idk if its here or on server. ok its definitely going to be on the server. probably.
 
   function appendDom(data) {
@@ -27,6 +27,7 @@ function getData() {
     .then((response) => {
       //appendDom(response)
       console.log(response);
+      displayHistory(response); /// maybe??
     })
     .catch((err) => {
       console.log(err);
@@ -44,4 +45,18 @@ function postData() {
     .catch((err) => {
       console.log(err);
     });
+}
+////below code questionable
+function displayHistory(historyData) {
+  const container = $("#historyContainer");
+
+  // Clear previous history
+  container.empty();
+
+  // Loop through the historyData and append each calculation to the container
+  historyData.forEach((calculation) => {
+    const calculationText = `${calculation.firstNumber} ${calculation.operator} ${calculation.secondNumber} = ${calculation.result}`;
+    const listItem = $("<li>").text(calculationText);
+    container.append(listItem);
+  });
 }
