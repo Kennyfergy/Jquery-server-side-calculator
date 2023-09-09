@@ -32,7 +32,7 @@ function getData() {
     .catch((err) => {
       console.log(err);
     });
-}
+} //end getData
 function postData() {
   $.ajax({
     method: "POST",
@@ -45,14 +45,15 @@ function postData() {
     .catch((err) => {
       console.log(err);
     });
-}
-////below code questionable
+} //end postData
+////below code questionable and i mean below liek all the way down to 62
 function displayHistory(historyData) {
   const container = $("#historyContainer");
 
   // Clear previous history
-  container.empty();
+  //container.empty(); // I don't think i want to do this actually
 
+  // wait what is this even doing? i don't think it is correct
   // Loop through the historyData and append each calculation to the container
   historyData.forEach((calculation) => {
     const calculationText = `${calculation.firstNumber} ${calculation.operator} ${calculation.secondNumber} = ${calculation.result}`;
