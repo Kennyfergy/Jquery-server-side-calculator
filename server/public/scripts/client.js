@@ -37,7 +37,6 @@ function handleReady() {
 
   //need a post results function with an ajax in
 
-  ////need to make on clicks for each operator button
   function getData() {
     $.ajax({
       method: "GET",
@@ -61,14 +60,11 @@ function handleReady() {
         $("#historyContainer").append(`
  <p>
  ${input.firstNumber} ${input.operator}
- ${input.secondNumber} ${input.result}
+ ${input.secondNumber} = ${input.result}
  </p>
  `);
       }
-      $("#historyContainer").text(data); //probably not this
     } //end appendDom
-
-    //make a getCalculations on the server to pull back here??
   } //end getData
   function postData(historyData) {
     let firstNumber = $("#firstNumber").val();
@@ -90,3 +86,16 @@ function handleReady() {
       });
   } //end postData
 } //end onReady
+function clearData() {
+  $.ajax({
+    method: "GET",
+    url: "/clear",
+  })
+    .then((response) => {
+      $("#historyContainer").empty();
+      console.log(response);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
