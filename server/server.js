@@ -43,7 +43,8 @@ app.post("/calculations", (req, res) => {
   mathTracker.push(mathHistory);
   res.sendStatus(201);
 
-  function displayHistory() {}
+  //need function to handle on click of submit, run mathHistory.operator and store data
+  //function displayHistory() {}
 });
 
 app.listen(PORT, () => {
