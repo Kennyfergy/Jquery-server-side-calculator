@@ -24,12 +24,13 @@ This project was built with:
 The gitignore contains the node_modules so these will not load with the project.
 The project wasn't built with any running server.
 Will have to start the server locally to view and test features.
-Can be ran with npm start
+Can be ran with express installed and running npm start
 
 ## Usage
 
 This project creates a basic calculator that can perform basic math such as addition, subtraction, multiplication, and division.
 The history is stored on the server side, so anything added after the server is running will remain on the page even after refresh.
+The clear button will however clear the history.
 
 ## Credits
 
