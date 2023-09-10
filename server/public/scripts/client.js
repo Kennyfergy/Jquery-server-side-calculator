@@ -86,7 +86,7 @@ function handleReady() {
 } //end onReady
 function clearData() {
   $.ajax({
-    method: "GET",
+    method: "POST",
     url: "/clear",
   })
     .then((response) => {
