@@ -9,6 +9,18 @@ function handleReady() {
   }); //click listener for clear inputs
   $("#submitButton").on("click", postData);
   getData();
+
+  const clear = () => {
+    $("#firstNumber").val("");
+    $("#secondNumber").val("");
+    $("#plusButton").val("");
+    $("#subtractButton").val("");
+    $("#multiplyButton").val("");
+    $("#divideButton").val("");
+  };
+
+  $("#cBtn").on("click", clear);
+
   //make a function to store data, idk if its here or on server. ok its definitely going to be on the server. probably.
 
   // i think this is the way to do this using this and data
@@ -51,10 +63,13 @@ function handleReady() {
 
     function appendDom(data) {
       $("#historyContainer").empty(); ///**** Just added
+
       for (const input of data) {
         console.log("looking for input of firstNumber", input.firstNumber);
         console.log("looking for input of secondNumber", input.secondNumber);
         console.log("looking for input of operator", input.operator);
+        $("#mathResult").empty();
+        $("#mathResult").append(input.result);
         $("#historyContainer").append(`
  <p>
  ${input.firstNumber} ${input.operator}
@@ -91,6 +106,7 @@ function clearData() {
   })
     .then((response) => {
       $("#historyContainer").empty();
+      $("#mathResult").empty();
       console.log(response);
     })
     .catch((err) => {
