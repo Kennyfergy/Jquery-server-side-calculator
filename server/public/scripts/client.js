@@ -17,11 +17,9 @@ function handleReady() {
     $("#subtractButton").val("");
     $("#multiplyButton").val("");
     $("#divideButton").val("");
-  };
+  }; // end Clear function to clear the inputs and operator selection
 
   $("#cBtn").on("click", clear);
-
-  //make a function to store data, idk if its here or on server. ok its definitely going to be on the server. probably.
 
   // i think this is the way to do this using this and data
   //   $(".operator-button").on("click", function () {
@@ -41,12 +39,11 @@ function handleReady() {
     selectedOperator = "/";
   });
 
+  //this function deprecated, replaced with new clear function
   function clearInputs() {
     $("#firstNumber").val(""); // emptying fields
     $("#secondNumber").val("");
   }
-
-  //need a post results function with an ajax in
 
   function getData() {
     $.ajax({
