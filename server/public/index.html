@@ -8,25 +8,25 @@
     <script src="./vendors/jquery.js"></script>
     <script src="./scripts/client.js"></script>
   </head>
-
   <body>
-    <div class="calculator"></div>
-    <h1>Calculator</h1>
-    <!--   <h5><p>So, i tried to make it look like a classic calculator, and I got a working css/html file without any data that looks like a calculator, but somehow i couldn't get this one to look like a calculator so here we are.</p></h5>   -->
-
-    <input type="number" id="firstNumber" placeholder="Number"/>
-    <button type="button" class="plusButton" id="plusButton">+</button>
-    <button type="button" class="subtractButton" id="subtractButton">-</button>
-    <button type="button" class="multiplyButton" id="multiplyButton">*</button>
-    <button type="button" class="divideButton" id="divideButton">&#247</button>
-    <input type="number" id="secondNumber" placeholder="Number" />
-    <button type="button" id="submitButton">=</button>
-    <button type="button" id="cBtn">C</button>
-    <button type="button" id="clearButton">Clear All</button>
+    <div class="calculator">
+      <h1 id="header">Jquery Calculator</h1>
+      <div id="display">
+        <input type="number" id="firstNumber" placeholder="Number" />
+        <input type="number" id="secondNumber" placeholder="Number" />
+        <div>The result is: <span id="mathResult"></span></div>
+      </div>
+      <div id="buttons">
+        <button type="button" class="operator" id="plusButton">+</button>
+        <button type="button" class="operator" id="subtractButton">-</button>
+        <button type="button" class="operator" id="multiplyButton">*</button>
+        <button type="button" class="operator" id="divideButton">&#247;</button>
+        <button type="button" id="submitButton">=</button>
+        <button type="button" id="cBtn">C</button>
+        <button type="button" id="clearButton">Clear All</button>
+      </div>
     </div>
-    <h3>The computer did the hard part and the result is: <span id="mathResult"></span></h3>
+    <footer id="footer">&copy; Kenny Ferguson 2023</footer>
     <div id="historyContainer"></div>
-    
   </body>
-  <footer id="footer">&copy Kenny Ferguson 2023</footer>
 </html>
