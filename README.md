@@ -10,7 +10,7 @@ I ran into a weird bug where I tried to format the CSS so it looked like a tradi
 
 ## Screen Shot
 
--need to add a couple picture of project when complete
+<img width="634" alt="Screenshot 2023-11-07 at 08 56 06" src="https://github.com/Kennyfergy/Jquery-server-side-calculator/assets/121765690/fef71f95-1d33-4bd1-bdd0-8a44cbe3bdc1">
 
 ## Running project
 
