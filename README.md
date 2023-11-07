@@ -6,14 +6,13 @@ Server Side Calculator
 
 This project took me approximately 8 hours to solve. Having learned express, and node within the last week, getting the server running and working properly was a bit of a challenge.
 
-I ran into a weird bug where I tried to format the CSS so it looked like a traditional calculator, and while it was successful, it was very very small on the page, so I reverted back to what I thought was decent looking CSS.
+## See the live project
+
+src="https://frosty-glitter-4679.fly.dev/"
 
 ## Screen Shot
 
 <img width="634" alt="Screenshot 2023-11-07 at 08 56 06" src="https://github.com/Kennyfergy/Jquery-server-side-calculator/assets/121765690/fef71f95-1d33-4bd1-bdd0-8a44cbe3bdc1">
-
-##See the live project
-src="https://frosty-glitter-4679.fly.dev/"
 
 ## Running project
 
